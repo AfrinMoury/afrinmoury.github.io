@@ -27,11 +27,11 @@
             '        <div class="menu">\n' +
             '            <div class="menu__toggle js-menu-toggle"><div class="menu__toggle__icon"><span></span></div></div>\n' +
             '            <div class="menu__wrap">\n' +
-            '                <ul class="menu__list">\n' +
-            '                    <li class="menu__list__item"><a href="' + root + 'index.html" class="menu__list__item__link">Projects</a></li>\n' +
-            '                    <li class="menu__list__item"><a href="' + root + 'about.html" class="menu__list__item__link">About</a></li>\n' +
-            '                    <li class="menu__list__item"><a href="' + root + 'contact.html" class="menu__list__item__link">Contact</a></li>\n' +
-            '                </ul>\n' +
+            '                <div class="menu__inline">\n' +
+            '                    <a href="' + root + 'index.html" class="menu__list__item__link">Projects</a> <span class="menu__sep">|</span> ' +
+            '                    <a href="' + root + 'about.html" class="menu__list__item__link">About</a> <span class="menu__sep">|</span> ' +
+            '                    <a href="' + root + 'contact.html" class="menu__list__item__link">Contact</a>\n' +
+            '                </div>\n' +
             '            </div>\n' +
             '        </div>\n' +
             '\n' +
