@@ -6,6 +6,31 @@
 (function () {
     'use strict';
 
+    /* ---- DARK / LIGHT MODE ---- */
+    var themeToggle = document.getElementById('theme-toggle');
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (themeToggle) {
+            var icon = themeToggle.querySelector('i');
+            if (icon) {
+                icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+        }
+    }
+
+    /* Apply saved theme on every page (also applied inline in <head> to prevent flash) */
+    var savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            var current = document.documentElement.getAttribute('data-theme') || 'light';
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
     /* ---- PAGE LOAD ANIMATION ---- */
     document.body.classList.add('loading');
     window.addEventListener('load', function () {

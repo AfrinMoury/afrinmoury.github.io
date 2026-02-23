@@ -22,6 +22,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css" />
+    <script>(function(){var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
 
 <body class="loading">
@@ -97,6 +98,9 @@
                     <li class="menu__list__item">
                         <a href="projects/medtech.html" class="menu__list__item__link">Medtech</a>
                     </li>
+                    <li class="menu__list__item">
+                        <a href="projects/professional-work.html" class="menu__list__item__link">Professional Work</a>
+                    </li>
                 </ul>
             </div>
 
@@ -122,8 +126,8 @@
                 <div class="footer__copyright">
                     <span>© 2026 Afrin Moury</span>
                 </div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
             </div>
-
         </div>
     </header>
 
@@ -147,6 +151,7 @@
                                     <h2 class="portfolio-item__title">Floating Horizon</h2>
                                     <p class="portfolio-item__subtitle">Rowing Centre · Clinton Lake, Illinois</p>
                                 </div>
+                                <p class="portfolio-item__desc">An elevated steel ramp over water paired with an engineered wood boathouse, framing the lakeside landscape as both stage and shelter.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -166,6 +171,7 @@
                                     <h2 class="portfolio-item__title">Ember Negative</h2>
                                     <p class="portfolio-item__subtitle">Fire Station · Texas, USA</p>
                                 </div>
+                                <p class="portfolio-item__desc">A fire station exploring absence and material contrast — where carved negative space defines programme, threshold, and civic presence.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -185,6 +191,7 @@
                                     <h2 class="portfolio-item__title">Nautical</h2>
                                     <p class="portfolio-item__subtitle">Maritime Centre · Jeju, South Korea</p>
                                 </div>
+                                <p class="portfolio-item__desc">A maritime cultural centre rooted in Jeju's coastal identity, where fluid form and programme celebrate the island's deep relationship with the sea.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -204,6 +211,7 @@
                                     <h2 class="portfolio-item__title">Recycling Park</h2>
                                     <p class="portfolio-item__subtitle">Waste Management &amp; Urban Park · Dhaka</p>
                                 </div>
+                                <p class="portfolio-item__desc">A thesis project transforming 133 acres of Dhaka's waste infrastructure into public parkland — a top-50 finalist in the Tamayouz International Award.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -216,13 +224,14 @@
                     <div class="portfolio-item">
                         <a class="portfolio-item__link" href="projects/skywalker.html">
                             <div class="portfolio-item__image">
-                                <img src="assets/images/skywalker/D5Next_Image005_20231113_224836.jpg" alt="Skywalker" loading="lazy" />
+                                <img src="assets/images/skywalker/s.jpg" alt="Skywalker" loading="lazy" />
                             </div>
                             <div class="portfolio-item__content">
                                 <div class="portfolio-item__info">
                                     <h2 class="portfolio-item__title">Skywalker</h2>
                                     <p class="portfolio-item__subtitle">Skyscraper · Dhaka, Bangladesh</p>
                                 </div>
+                                <p class="portfolio-item__desc">A high-rise residential tower in Teigaon engaging Dhaka's vertical density through layered setbacks, shared sky gardens, and a rhythmic facade.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -242,6 +251,7 @@
                                     <h2 class="portfolio-item__title">Interplay</h2>
                                     <p class="portfolio-item__subtitle">Apartment Building · Dhaka, Bangladesh</p>
                                 </div>
+                                <p class="portfolio-item__desc">A residential complex in Bashundhara where light, courtyard, and spatial rhythm create a dialogue between private living and shared community.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
@@ -261,11 +271,32 @@
                                     <h2 class="portfolio-item__title">Medtech</h2>
                                     <p class="portfolio-item__subtitle">Hospital · Mymensingh, Bangladesh</p>
                                 </div>
+                                <p class="portfolio-item__desc">A 116,000 sq ft medical facility designed around clarity of wayfinding, natural light, and patient-centred spatial organisation.</p>
                             </div>
                         </a>
                         <div class="portfolio-item__caption">
                             <div class="portfolio-item__caption-title">Medtech</div>
                             <div class="portfolio-item__caption-sub">Hospital · Mymensingh, Bangladesh</div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Professional Work -->
+                    <div class="portfolio-item">
+                        <a class="portfolio-item__link" href="projects/professional-work.html">
+                            <div class="portfolio-item__image">
+                                <img src="assets/images/professional-work/q.jpg" alt="Professional Work" loading="lazy" />
+                            </div>
+                            <div class="portfolio-item__content">
+                                <div class="portfolio-item__info">
+                                    <h2 class="portfolio-item__title">Professional Work</h2>
+                                    <p class="portfolio-item__subtitle">Professional &amp; Academic Projects</p>
+                                </div>
+                                <p class="portfolio-item__desc">A selection of professional and academic work spanning design exploration, visualization, and applied architectural practice.</p>
+                            </div>
+                        </a>
+                        <div class="portfolio-item__caption">
+                            <div class="portfolio-item__caption-title">Professional Work</div>
+                            <div class="portfolio-item__caption-sub">Professional &amp; Academic Projects</div>
                         </div>
                     </div>
 
@@ -299,6 +330,5 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script></body>
 </html>
