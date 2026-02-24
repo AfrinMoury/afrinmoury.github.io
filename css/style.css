@@ -1742,7 +1742,7 @@ body.loading .footer {
    ================================================ */
 
 [data-theme="dark"] body {
-    background: #2b2d31;
+    background: #1e2028;
     color: #96a0ad;
 }
 
@@ -1875,7 +1875,7 @@ body.loading .footer {
 }
 
 [data-theme="dark"] .single {
-    background: #313338;
+    background: #1e2028;
 }
 
 [data-theme="dark"] .project-title {
@@ -1931,7 +1931,7 @@ body.loading .footer {
 }
 
 [data-theme="dark"] .intro {
-    background: #313338;
+    background: #000000;
 }
 
 [data-theme="dark"] .about-photo {
