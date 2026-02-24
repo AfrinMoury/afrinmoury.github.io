@@ -46,6 +46,21 @@
         font-size: 0.95em;
     }
 }
+@media (min-width: 768px) and (max-width: 1023px) {
+    .menu__inline {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+    .menu__inline a:last-child {
+        width: 100%;
+        flex-basis: 100%;
+        display: block;
+        margin-top: 4px;
+    }
+    .menu__inline .menu__sep:last-of-type {
+        display: none;
+    }
+}
 /* ================================================
    AFRIN MOURY — ARCHITECTURE PORTFOLIO
    Design based on Index Jekyll Theme
@@ -105,7 +120,7 @@ a {
     text-decoration: none;
     color: #2a2f36;
     font-weight: 500;
-    transition: all 0.15s ease-in-out;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 a:hover {
@@ -197,33 +212,41 @@ hr {
     height: 15px;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease-in-out;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     z-index: 9999;
 }
 
 .loader svg {
     width: 100%;
     height: 100%;
-    fill: rgba(42, 47, 54, 0.2);
+    fill: rgba(42, 47, 54, 0.25);
+    animation: loaderPulse 1.2s ease-in-out infinite;
 }
 
 body.loading .loader {
     opacity: 1;
     visibility: visible;
-    transition: all 0.4s ease-in-out 1s;
+    transform: translate(-50%, -50%) scale(1.02);
+    transition: opacity 0.4s ease 0.6s, transform 0.4s ease 0.6s;
 }
 
 body.loading .page {
     opacity: 0;
     visibility: hidden;
-    transform: translate(0, 20px);
-    transition: all 0.4s ease-in-out, transform 0s ease-in-out 0.4s;
+    transform: translateY(16px);
+    filter: blur(2px);
+    transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 }
 
 body.loading .footer {
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease-in-out;
+    transition: opacity 0.4s ease;
+}
+
+@keyframes loaderPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 /* === PAGE LAYOUT === */
@@ -235,7 +258,7 @@ body.loading .footer {
 }
 
 .page {
-    transition: all 0.6s cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -752,11 +775,33 @@ body.loading .footer {
     padding: 10px;
     float: left;
     width: 50%;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+@media (max-width: 600px) {
+    .portfolio {
+        padding: 6px;
+    }
+    .portfolio-item {
+        width: 100%;
+        float: none;
+        padding: 6px;
+    }
+}
+@media (max-width: 600px) {
+    .portfolio {
+        padding: 6px;
+    }
+    .portfolio-item {
+        padding: 6px;
+    }
 }
 
 .portfolio-item__link {
     position: relative;
     display: block;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 /* Fixed aspect ratio for consistent grid */
@@ -775,11 +820,11 @@ body.loading .footer {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s ease;
 }
 
 .portfolio-item__link:hover .portfolio-item__image img {
-    transform: scale(1.03);
+    transform: scale(1.06);
 }
 
 /* Hover overlay — title centered, desc at bottom */
@@ -797,7 +842,20 @@ body.loading .footer {
     background: rgba(20, 20, 20, 0.6);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.portfolio-item__link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-item__caption-title,
+.portfolio-item__caption-sub {
+    transition: color 0.25s ease;
+}
+
+.portfolio-item__link:hover + .portfolio-item__caption .portfolio-item__caption-title {
+    color: #0c5df2;
 }
 
 @media only screen and (min-width: 1024px) {
