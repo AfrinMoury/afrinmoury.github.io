@@ -94,28 +94,52 @@
     lb.className = 'lightbox';
     lb.setAttribute('role', 'dialog');
     lb.setAttribute('aria-modal', 'true');
+    var thumbnailsHTML = '<div class="lightbox__thumbnails" id="lightbox-thumbnails">';
+    galleryImages.forEach(function (_, i) {
+        thumbnailsHTML += '<div class="lightbox__thumbnail" data-idx="' + i + '"><img src="" alt="" /></div>';
+    });
+    thumbnailsHTML += '</div>';
     lb.innerHTML =
         '<button class="lightbox__close" aria-label="Close">&#10005;</button>' +
         '<button class="lightbox__prev" aria-label="Previous">&#8249;</button>' +
         '<img class="lightbox__img" src="" alt="" />' +
-        '<button class="lightbox__next" aria-label="Next">&#8250;</button>';
+        '<button class="lightbox__next" aria-label="Next">&#8250;</button>' +
+        thumbnailsHTML;
     document.body.appendChild(lb);
 
     var lbImg   = lb.querySelector('.lightbox__img');
     var lbClose = lb.querySelector('.lightbox__close');
     var lbPrev  = lb.querySelector('.lightbox__prev');
     var lbNext  = lb.querySelector('.lightbox__next');
+    var lbThumbnails = lb.querySelectorAll('.lightbox__thumbnail');
     var currentIdx = 0;
     var srcList = [];
 
-    galleryImages.forEach(function (img) {
+    galleryImages.forEach(function (img, i) {
         srcList.push(img.src);
+        lbThumbnails[i].querySelector('img').src = img.src;
+        lbThumbnails[i].querySelector('img').alt = img.alt || '';
     });
+
+    function updateThumbnails() {
+        lbThumbnails.forEach(function (thumb, i) {
+            thumb.classList.toggle('active', i === currentIdx);
+        });
+        // Scroll to active thumbnail
+        var activeThumbnail = lbThumbnails[currentIdx];
+        if (activeThumbnail && activeThumbnail.parentElement) {
+            var container = activeThumbnail.parentElement;
+            var containerCenter = container.clientWidth / 2;
+            var thumbnailCenter = activeThumbnail.offsetLeft + activeThumbnail.clientWidth / 2;
+            container.scrollLeft = thumbnailCenter - containerCenter;
+        }
+    }
 
     function openAt(idx) {
         currentIdx = (idx + srcList.length) % srcList.length;
         lbImg.src = srcList[currentIdx];
         lbImg.alt = galleryImages[currentIdx].alt || '';
+        updateThumbnails();
         lb.classList.add('is-active');
         document.body.style.overflow = 'hidden';
     }
@@ -128,6 +152,13 @@
 
     galleryImages.forEach(function (img, i) {
         img.addEventListener('click', function () { openAt(i); });
+    });
+
+    lbThumbnails.forEach(function (thumb, i) {
+        thumb.addEventListener('click', function (e) {
+            e.stopPropagation();
+            openAt(i);
+        });
     });
 
     lbClose.addEventListener('click', close);

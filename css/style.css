@@ -1,4 +1,4 @@
-/* Match sidebar and page backgrounds in dark mode */
+﻿/* Match sidebar and page backgrounds in dark mode */
 [data-theme="dark"] .header,
 [data-theme="dark"] .header__content,
 [data-theme="dark"] .page,
@@ -1181,8 +1181,9 @@ body.loading .footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.93);
+    background: rgba(0, 0, 0, 0.95);
     cursor: zoom-out;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -1193,56 +1194,123 @@ body.loading .footer {
 
 .lightbox__img {
     max-width: 90vw;
-    max-height: 88vh;
+    max-height: 75vh;
     object-fit: contain;
     cursor: default;
     display: block;
+    animation: fadeInImage 0.4s ease-in-out;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .lightbox__close {
     position: fixed;
-    top: 16px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    color: #2a2f36;
+    font-size: 28px;
+    color: #fff;
     cursor: pointer;
-    background: none;
-    border: none;
-    transition: color 0.15s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.2s ease;
     z-index: 10001;
 }
 
-.lightbox__close:hover { color: #0c5df2; }
+.lightbox__close:hover {
+    color: #0c5df2;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #0c5df2;
+    transform: scale(1.1);
+}
 
 .lightbox__prev,
 .lightbox__next {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 60px;
+    width: 70px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    color: #2a2f36;
+    font-size: 40px;
+    color: #fff;
     cursor: pointer;
-    background: none;
-    border: none;
-    transition: color 0.15s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    transition: all 0.2s ease;
     z-index: 10001;
 }
 
-.lightbox__prev { left: 10px; }
-.lightbox__next { right: 10px; }
+.lightbox__prev { left: 20px; }
+.lightbox__next { right: 20px; }
 
 .lightbox__prev:hover,
-.lightbox__next:hover { color: #0c5df2; }
+.lightbox__next:hover {
+    color: #0c5df2;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #0c5df2;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox__thumbnails {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    max-width: 90vw;
+    overflow-x: auto;
+    z-index: 10000;
+}
+
+.lightbox__thumbnail {
+    width: 70px;
+    height: 70px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.lightbox__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.lightbox__thumbnail:hover {
+    border-color: #0c5df2;
+    transform: scale(1.1);
+}
+
+.lightbox__thumbnail.active {
+    border-color: #0c5df2;
+    box-shadow: 0 0 12px rgba(12, 93, 242, 0.6);
+}
 
 /* === ABOUT / INTRO PAGE === */
 .intro {
@@ -1792,6 +1860,10 @@ body.loading .footer {
     color: #5e6878;
 }
 
+[data-theme="dark"] .portfolio {
+    background: #1e2028;
+}
+
 [data-theme="dark"] .theme-toggle {
     background: #d8dde4;
     color: #2b2d31;
@@ -1949,3 +2021,4 @@ body.loading .footer {
 [data-theme="dark"] .contact-info-row a:hover {
     color: #5a8ff0;
 }
+
